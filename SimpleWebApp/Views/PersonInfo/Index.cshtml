@@ -1,0 +1,47 @@
+﻿@model List<Person>
+
+<div class="row mx-5">
+    <div class="d-flex justify-content-between">
+        <h1>
+            Person List
+        </h1>
+        <div class="pt-1 align-middle">
+        <a asp-controller="PersonInfo" asp-action="Create" class="btn btn-outline-light">
+            CREATE
+        </a>
+        </div>
+     </div>
+</div>
+<table class="table table-hover table-striped mt-3">
+    <thead>
+    <tr class="table-secondary">
+        <th scope="row">Name</th>
+        <th>Age</th>
+        <th>Birth Date</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th class="text-center px-0">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+             <tr class = "table-primary align-middle">
+                <td>@obj.Name</td>
+                <td>@obj.Age</td>
+                <td>@obj.BirthDate</td>
+                <td>@obj.Address</td>
+                <td>@obj.Phone</td>
+                <td class="table-light text-center px-0">
+                    <a asp-controller="PersonInfo" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-warning">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                    <a asp-controller="PersonInfo" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger">
+                            <i class="bi bi-trash-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

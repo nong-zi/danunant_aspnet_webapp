@@ -1,0 +1,40 @@
+﻿@model Person
+
+
+<form method="post">
+    <div class="card border-dark p-3 mt-4" style="max-width: 40rem; margin: auto">
+        <div class="card-header text-light">
+            <h1>Delete Data for @Model.Name</h1>
+        </div>
+        <div>
+            <label asp-for="Name" class="form-label mt-2"></label>
+            <input asp-for="Name" disabled class="form-control" placeholder="Enter Name">
+        </div>
+        <div>
+            <label asp-for="Age" class="form-label mt-4"></label>
+            <input asp-for="Age" disabled class="form-control" placeholder="Age">
+
+        </div>
+        <div>
+            <label asp-for="BirthDate" class="form-label mt-4"></label>
+            <input type="Date" asp-for="BirthDate" disabled class="form-control" placeholder="Enter Birth Date">
+        </div>
+        <div>
+            <label asp-for="Address" class="form-label mt-4"></label>
+            <input asp-for="Address" disabled class="form-control" placeholder="Enter Address">
+        </div>
+        <div>
+            <label asp-for="Phone" class="form-label mt-4"></label>
+            <input asp-for="Phone" disabled class="form-control" placeholder="Enter Phone Number">
+        </div>
+
+        <div class="btn-group mt-4">
+            <div>
+                <button type="DELETE" class="btn btn-lg btn-outline-danger">DELETE</button>
+            </div>
+            <div>
+                <a asp-controller="PersonInfo" asp-action="Index" class="btn btn-lg btn-outline-secondary"> BACK</a>
+            </div>
+        </div>
+    </div>
+</form>
