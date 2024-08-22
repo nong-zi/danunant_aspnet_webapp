@@ -2,23 +2,24 @@
 using SimpleWebApp.Data;
 using SimpleWebApp.Migrations;
 using SimpleWebApp.Models;
-using System.ComponentModel;
+using System.ComponentModel; //data binding with models
 
-
-namespace SimpleWebApp.Controllers
+namespace SimpleWebApp.Controllers 
 {
-    public class PersonInfoController : Controller
+    public class PersonInfoController : Controller //define action method inside this class
     {
         private readonly ApplicationDbContext _db;
+        //declare a variable for providing access to interact with database
         public PersonInfoController(ApplicationDbContext db)
         {
-            _db = db;
+            _db = db; //store the object from this contructor 
         }
 
-        
         public IActionResult Index()
         {
             List<Person> objPersonList = _db.Person_Info.ToList();
+            //convert the object from the data base to list and store it
+
             return View(objPersonList);
         }
 
@@ -26,14 +27,16 @@ namespace SimpleWebApp.Controllers
         {
             return View();    
         }
-        [HttpPost]
-        public IActionResult Create(Person obj)
+        [HttpPost] //this specifies that this action handles HTTP POST
+        public IActionResult Create(Person obj) //take a parameter from Model Person
+        //The model binding system automatically maps the form submitted
+        //in the create view to Person
         {
             if (ModelState.IsValid)
             {
-                _db.Person_Info.Add(obj);
+                _db.Person_Info.Add(obj); //add a new obj to database
                 _db.SaveChanges();
-                TempData["success"] = "Create successfully";
+                TempData["success"] = "Create successfully"; //inside TempData will stay for one instance
                 return RedirectToAction("Index");
             }
             return View();
@@ -64,13 +67,16 @@ namespace SimpleWebApp.Controllers
             }
             return View();
         }
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int? id) //delete get method
+            //? makes the parameter nullable
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
+
             Person? personFromDb = _db.Person_Info.FirstOrDefault(x => x.Id == id);
+            
             if (personFromDb == null)
             {
                 return NotFound();
@@ -78,6 +84,7 @@ namespace SimpleWebApp.Controllers
 
             return View(personFromDb);
         }
+
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {

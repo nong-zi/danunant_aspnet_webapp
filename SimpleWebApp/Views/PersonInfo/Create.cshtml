@@ -1,5 +1,4 @@
-﻿@model Person
-
+﻿@model Person //for direct access to a model
 
 <form method="post">
     <div class="card border-dark p-3 mt-4" style="max-width: 40rem; margin: auto">
@@ -7,9 +6,11 @@
             <h1>Enter Person Data</h1>
          </div>
         <div>
-            <label asp-for="Name" class="form-label mt-2"></label>
+            <label asp-for="Name" class="form-label mt-2"></label> 
+            @* asp-for is used to bin input fields to match in a model class *@
             <input asp-for="Name" class="form-control" placeholder="Enter Name">
             <span asp-validation-for="Name" class="text-danger"></span>
+            @* this is a ASP.NET Core's built in validation system *@
         </div>
         <div>
             <label asp-for="Age" class="form-label mt-4"></label>
