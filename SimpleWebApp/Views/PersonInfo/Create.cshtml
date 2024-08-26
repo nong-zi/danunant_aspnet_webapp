@@ -7,7 +7,7 @@
          </div>
         <div>
             <label asp-for="Name" class="form-label mt-2"></label> 
-            @* asp-for is used to bin input fields to match in a model class *@
+            @* asp-for is used to bind input fields to match in a model class *@
             <input asp-for="Name" class="form-control" placeholder="Enter Name">
             <span asp-validation-for="Name" class="text-danger"></span>
             @* this is a ASP.NET Core's built in validation system *@

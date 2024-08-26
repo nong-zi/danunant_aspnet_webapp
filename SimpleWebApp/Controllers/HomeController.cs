@@ -16,7 +16,7 @@ namespace SimpleWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index() //action method that handles requests to the root UR
+        public IActionResult Index() //action method that handles requests to the root URL
         {
             return View(); //return index page
         }
